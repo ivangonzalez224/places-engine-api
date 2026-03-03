@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  address: MyString
+  place_type: MyString
+  is_vegan: false
+  rating: 9.99
+  schedule: 
+  links: 
+  price_range: MyString
+
+two:
+  name: MyString
+  description: MyText
+  address: MyString
+  place_type: MyString
+  is_vegan: false
+  rating: 9.99
+  schedule: 
+  links: 
+  price_range: MyString
