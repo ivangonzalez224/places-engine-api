@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_03_123003) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_04_124138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,12 +42,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_03_123003) do
     t.string "address"
     t.integer "place_type", default: 0
     t.boolean "is_vegan", default: false
-    t.decimal "rating", precision: 3, scale: 2
     t.jsonb "schedule", default: {}
     t.jsonb "links", default: {}
     t.string "price_range"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "average_rating", precision: 3, scale: 2, default: "0.0"
+    t.integer "ratings_count", default: 0
   end
 
   add_foreign_key "comments", "places"
