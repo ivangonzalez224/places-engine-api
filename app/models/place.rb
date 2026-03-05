@@ -12,4 +12,7 @@ class Place < ApplicationRecord
   # Scopes for clean API queries
   scope :vegan, -> { where(is_vegan: true) }
   scope :by_city, ->(code) { joins(:markers).where(markers: { city_code: code }).distinct }
+
+  # Postgres-specific for Case-Insensitive partial matching
+  scope :search_by_name, ->(query) { where("name ILIKE ?", "%#{query}%") }
 end
