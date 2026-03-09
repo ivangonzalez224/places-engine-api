@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :places, only: [:index, :show] do
       		member do
         		post 'rate' # /api/v1/places/:id/rate
+        		post 'comments', to: 'places#create_comment'
       		end
     		end
     end

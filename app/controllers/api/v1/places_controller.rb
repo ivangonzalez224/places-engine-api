@@ -38,6 +38,25 @@ module Api
           render json: { error: "Score must be between 1 and 5" }, status: :bad_request
         end
       end
+
+      def create_comment
+        place = Place.find(params[:id])
+        comment = place.comments.build(comment_params)
+
+        if comment.save
+          # devuelve el comentario recién creado
+          render json: CommentBlueprint.render(comment), status: :created
+        else
+          render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      private
+
+      def comment_params
+        # :photos  recibe los Signed IDs
+        params.require(:comment).permit(:content, :user_name, :user_pic, photos: [])
+      end
     end
   end
 end
